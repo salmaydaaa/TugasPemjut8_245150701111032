@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        System.out.print("Masukkan nomor registrasi karyawan: ");
+        int regNum = input.nextInt();
+        input.nextLine();
+
+        System.out.print("Masukkan nama karyawan: ");
+        String name = input.nextLine();
+
+        System.out.print("Masukkan gaji bulanan: ");
+        int salary = input.nextInt();
+
+        System.out.print("Masukkan jumlah invoice: ");
+        int invoiceCount = input.nextInt();
+        input.nextLine();
+
+        Invoice[] invoices = new Invoice[invoiceCount];
+        for (int i = 0; i < invoiceCount; i++) {
+            System.out.println("\n[Invoice ke-" + (i + 1) + "]");
+            System.out.print("Nama produk: ");
+            String product = input.nextLine();
+            System.out.print("Jumlah: ");
+            int quantity = input.nextInt();
+            System.out.print("Harga per item: ");
+            int price = input.nextInt();
+            input.nextLine();
+
+            invoices[i] = new Invoice(product, quantity, price);
+        }
+
+        Employee employee = new Employee(regNum, name, salary, invoices);
+
+        System.out.println("\n===== INFORMASI KARYAWAN =====");
+        employee.printEmployeeInfo();
+
+        input.close();
+    }
+}
